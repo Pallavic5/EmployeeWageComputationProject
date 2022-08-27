@@ -10,32 +10,36 @@ public class EmployeeWage {
 		final int IS_FULL_TIME = 2;
 		final int WAGE_PER_HOUR = 20;
 		final int WORKING_DAYS = 20;
+        final int MAX_WORKING_HRS = 100;
+        
+        int empFullDayWrkHrs = 0;
+        int totalEmpHrs = 0;
+		int totalWorkingDays = 0;
 		
-		int totalWage = 0;
-		
-		for(int day = 1; day <= WORKING_DAYS; day++ ) {
+		while (totalEmpHrs <= MAX_WORKING_HRS && totalWorkingDays < WORKING_DAYS) {
 			
+			totalWorkingDays++;
+
 			int empCheck = (int) (Math.random() * 100) % 3;
-			int empFullDayWrkHrs = 0;
-			
+
 			switch(empCheck) {
-			 case  IS_FULL_TIME :
+			case  IS_FULL_TIME :
 				  empFullDayWrkHrs = 16;
 	              break;
 	            
-	         case  IS_PART_TIME:
+	        case  IS_PART_TIME:
 	        	  empFullDayWrkHrs = 8;
 	              break;
 	             
-	          default:
+	         default:
 			}
-			
-			int empWage = empFullDayWrkHrs * WAGE_PER_HOUR;
-            System.out.println("Day " + day + " wage is:" + empWage);
-            totalWage += empWage;
-        }
+
+			totalEmpHrs += empFullDayWrkHrs ;
+			System.out.println("Day " + totalWorkingDays + " : Employee Maximum Working Hours are " + empFullDayWrkHrs );
+		}
 		
-         System.out.println("Total wage for a month = " + totalWage);   
+		int totalWage = totalEmpHrs * WAGE_PER_HOUR;
+		System.out.println("Total Employee Wage for month is " + totalWage);
 	}
 
 }
